@@ -1,4 +1,3 @@
-
 const cardTemplate = document.querySelector('#card-template').content;
 export const cardList = document.querySelector('.places__list');
 
@@ -25,11 +24,6 @@ export function createCard(link, name, deleteCard, likeCard, handleImagePopup) {
     cardImg.addEventListener('click', () => handleImagePopup(card));
 
     return cardElement;
-}
-
-
-export function appendCard(cardElement) {
-    cardList.append(cardElement);
 }
 
 export function deleteCard(cardElement) {

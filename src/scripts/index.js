@@ -1,6 +1,6 @@
 import "../pages/index.css";
 import {initialCards} from "./cards.js";
-import {createCard, deleteCard, appendCard, likeCard, cardList} from "./cardsFunction.js";
+import {createCard, deleteCard, likeCard, cardList} from "./cardsFunction.js";
 import {openPopUp, closePopUp, handleEscape} from "./modal.js";
 
 const popUpEdit = document.querySelector('.popup_type_edit');
@@ -21,7 +21,11 @@ const popUpTypeImage = document.querySelector('.popup_type_image');
 const popUpImage = document.querySelector('.popup__image');
 const popUpImageCaption = document.querySelector('.popup__caption');
 
-const formElement = document.querySelector('.popup__form');
+const profileForm = document.querySelector('.popup__form');
+
+function appendCard(cardElement) {
+  cardList.append(cardElement);
+}
 
 initialCards.forEach(function(card) {
     const newCard = createCard(card.link, card.name, deleteCard, likeCard, handleImagePopup);
@@ -49,9 +53,8 @@ buttonEdit.addEventListener("click", () => {
   openPopUp(popUpEdit);
 })
 
-
 ////изменение названия страницы
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
     evt.preventDefault(); 
     profileTitle.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
@@ -80,7 +83,7 @@ function handleImagePopup(card) {
 }
 
 popUpAddForm.addEventListener('submit', handleCardFormSubmit);
-formElement.addEventListener('submit', handleFormSubmit); 
+profileForm.addEventListener('submit', handleProfileFormSubmit); 
 
 
 
